@@ -1,0 +1,14 @@
+{
+  "name": "tennis-js",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "mocha **.spec.js",
+    "test:watch": "mocha --watch **.spec.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}
