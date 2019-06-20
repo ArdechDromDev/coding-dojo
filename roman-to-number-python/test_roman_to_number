@@ -1,0 +1,51 @@
+
+
+def roman_to_number(roman_number):
+    NB_MAX_CHAR_ALLOWED = 3
+    correspondences = {
+        'I' : 1,
+        'V' : 5,
+        'X' : 10
+    }
+    result = 0
+    tmp_char = ""
+    nb_char = 1
+    for char in roman_number:
+        if tmp_char !="" and correspondences[tmp_char]<correspondences[char]:
+            result = result - 2*correspondences[tmp_char]
+        if tmp_char == char:
+            nb_char += 1
+        else:
+            tmp_char = char
+            nb_char = 1
+        if nb_char > NB_MAX_CHAR_ALLOWED:
+            return
+
+        result += correspondences[char]
+    return result
+
+
+def test_should_return_one_for_i():
+    assert roman_to_number("I") == 1
+
+def test_should_return_tow_for_ii():
+    assert roman_to_number("II") == 2
+
+def test_should_return_three_for_iii():
+    assert roman_to_number("III") == 3
+
+def test_should_not_return_four_for_iiii():
+    assert roman_to_number("IIII") != 4
+
+def test_should_return_four_for_iv():
+    assert roman_to_number("IV") == 4
+
+def test_should_return_five_for_v():
+    assert roman_to_number("V") == 5
+
+def test_should_return_six_for_vi():
+    assert roman_to_number("VI") == 6
+
+def test_should_return_ten_for_X():
+    assert roman_to_number("X") == 10
+
